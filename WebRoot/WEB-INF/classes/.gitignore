@@ -1,5 +1,6 @@
 /SpringMVC-servlet.xml
-/applicationContext.xml
-/cn
-/log4j.properties
 /Test.class
+/applicationContext.xml
+/log4j.properties
+/snippet
+/cn

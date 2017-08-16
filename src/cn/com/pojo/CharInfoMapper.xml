@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.dao.CharInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.pojo.CharInfo" >
+    <id column="CHARID" property="charid" jdbcType="DECIMAL" />
+    <result column="SENDID" property="sendid" jdbcType="DECIMAL" />
+    <result column="RECEIVEID" property="receiveid" jdbcType="DECIMAL" />
+    <result column="CHARTIME" property="chartime" jdbcType="DECIMAL" />
+    <result column="CHARCONTENT" property="charcontent" jdbcType="VARCHAR" />
+    <result column="CHARSTATES" property="charstates" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CHARID, SENDID, RECEIVEID, CHARTIME, CHARCONTENT, CHARSTATES
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from CHARINFO
+    where CHARID = #{charid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from CHARINFO
+    where CHARID = #{charid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="cn.com.pojo.CharInfo" >
+    insert into CHARINFO (CHARID, SENDID, RECEIVEID, 
+      CHARTIME, CHARCONTENT, CHARSTATES
+      )
+    values (#{charid,jdbcType=DECIMAL}, #{sendid,jdbcType=DECIMAL}, #{receiveid,jdbcType=DECIMAL}, 
+      #{chartime,jdbcType=DECIMAL}, #{charcontent,jdbcType=VARCHAR}, #{charstates,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.pojo.CharInfo" >
+    insert into CHARINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="charid != null" >
+        CHARID,
+      </if>
+      <if test="sendid != null" >
+        SENDID,
+      </if>
+      <if test="receiveid != null" >
+        RECEIVEID,
+      </if>
+      <if test="chartime != null" >
+        CHARTIME,
+      </if>
+      <if test="charcontent != null" >
+        CHARCONTENT,
+      </if>
+      <if test="charstates != null" >
+        CHARSTATES,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="charid != null" >
+        #{charid,jdbcType=DECIMAL},
+      </if>
+      <if test="sendid != null" >
+        #{sendid,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveid != null" >
+        #{receiveid,jdbcType=DECIMAL},
+      </if>
+      <if test="chartime != null" >
+        #{chartime,jdbcType=DECIMAL},
+      </if>
+      <if test="charcontent != null" >
+        #{charcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="charstates != null" >
+        #{charstates,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.CharInfo" >
+    update CHARINFO
+    <set >
+      <if test="sendid != null" >
+        SENDID = #{sendid,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveid != null" >
+        RECEIVEID = #{receiveid,jdbcType=DECIMAL},
+      </if>
+      <if test="chartime != null" >
+        CHARTIME = #{chartime,jdbcType=DECIMAL},
+      </if>
+      <if test="charcontent != null" >
+        CHARCONTENT = #{charcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="charstates != null" >
+        CHARSTATES = #{charstates,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CHARID = #{charid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.CharInfo" >
+    update CHARINFO
+    set SENDID = #{sendid,jdbcType=DECIMAL},
+      RECEIVEID = #{receiveid,jdbcType=DECIMAL},
+      CHARTIME = #{chartime,jdbcType=DECIMAL},
+      CHARCONTENT = #{charcontent,jdbcType=VARCHAR},
+      CHARSTATES = #{charstates,jdbcType=DECIMAL}
+    where CHARID = #{charid,jdbcType=DECIMAL}
+  </update>
+</mapper>
