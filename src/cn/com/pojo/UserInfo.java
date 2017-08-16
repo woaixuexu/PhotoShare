@@ -15,7 +15,7 @@ public class UserInfo {
 
     private String profile;
 
-    private Short level;
+    private Integer level;
 
     private String location;
 
@@ -90,16 +90,15 @@ public class UserInfo {
     public void setProfile(String profile) {
         this.profile = profile == null ? null : profile.trim();
     }
+    public Integer getLevel() {
+		return level;
+	}
 
-    public Short getLevel() {
-        return level;
-    }
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
 
-    public void setLevel(Short level) {
-        this.level = level;
-    }
-
-    public String getLocation() {
+	public String getLocation() {
         return location;
     }
 
