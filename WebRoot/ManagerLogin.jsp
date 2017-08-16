@@ -86,11 +86,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var str=document.getElementById('userpwd').value;
 			if(str.length>=6&&str.length<=16){
 			if(checkUser()){
-				document.getElementById("sumbit").disabled=false;
+				document.getElementById('sumbit').disabled=false;
 			}
 			return true;
 			}else{
 			return false;
+			}
 			}	
 	
 	</script>

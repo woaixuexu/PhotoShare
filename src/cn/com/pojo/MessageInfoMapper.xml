@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.dao.MessageInfoMapper">
-  <resultMap id="BaseResultMap" type="cn.com.pojo.MessageInfo">
-    <id column="MESSAGEID" jdbcType="DECIMAL" property="messageid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="WMESSAGE" jdbcType="VARCHAR" property="wmessage" />
-    <result column="ADDTIME" jdbcType="DECIMAL" property="addtime" />
-    <result column="MSTATE" jdbcType="DECIMAL" property="mstate" />
-    <result column="PAGEVIEW" jdbcType="DECIMAL" property="pageview" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.dao.MessageInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.pojo.MessageInfo" >
+    <id column="MESSAGEID" property="messageid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="DECIMAL" />
+    <result column="WMESSAGE" property="wmessage" jdbcType="VARCHAR" />
+    <result column="ADDTIME" property="addtime" jdbcType="DECIMAL" />
+    <result column="MSTATE" property="mstate" jdbcType="DECIMAL" />
+    <result column="PAGEVIEW" property="pageview" jdbcType="DECIMAL" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     MESSAGEID, USERID, WMESSAGE, ADDTIME, MSTATE, PAGEVIEW
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from MESSAGEINFO
     where MESSAGEID = #{messageid,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from MESSAGEINFO
     where MESSAGEID = #{messageid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.com.pojo.MessageInfo">
+  <insert id="insert" parameterType="cn.com.pojo.MessageInfo" >
     insert into MESSAGEINFO (MESSAGEID, USERID, WMESSAGE, 
       ADDTIME, MSTATE, PAGEVIEW
       )
@@ -30,173 +30,71 @@
       #{addtime,jdbcType=DECIMAL}, #{mstate,jdbcType=DECIMAL}, #{pageview,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.MessageInfo">
+  <insert id="insertSelective" parameterType="cn.com.pojo.MessageInfo" >
     insert into MESSAGEINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="messageid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageid != null" >
         MESSAGEID,
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         USERID,
       </if>
-      <if test="wmessage != null">
+      <if test="wmessage != null" >
         WMESSAGE,
       </if>
-      <if test="addtime != null">
+      <if test="addtime != null" >
         ADDTIME,
       </if>
-      <if test="mstate != null">
+      <if test="mstate != null" >
         MSTATE,
       </if>
-      <if test="pageview != null">
+      <if test="pageview != null" >
         PAGEVIEW,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="messageid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageid != null" >
         #{messageid,jdbcType=DECIMAL},
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="wmessage != null">
+      <if test="wmessage != null" >
         #{wmessage,jdbcType=VARCHAR},
       </if>
-      <if test="addtime != null">
+      <if test="addtime != null" >
         #{addtime,jdbcType=DECIMAL},
       </if>
-      <if test="mstate != null">
+      <if test="mstate != null" >
         #{mstate,jdbcType=DECIMAL},
       </if>
-      <if test="pageview != null">
+      <if test="pageview != null" >
         #{pageview,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.MessageInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.MessageInfo" >
     update MESSAGEINFO
-    <set>
-      <if test="userid != null">
+    <set >
+      <if test="userid != null" >
         USERID = #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="wmessage != null">
+      <if test="wmessage != null" >
         WMESSAGE = #{wmessage,jdbcType=VARCHAR},
       </if>
-      <if test="addtime != null">
+      <if test="addtime != null" >
         ADDTIME = #{addtime,jdbcType=DECIMAL},
       </if>
-      <if test="mstate != null">
+      <if test="mstate != null" >
         MSTATE = #{mstate,jdbcType=DECIMAL},
       </if>
-      <if test="pageview != null">
+      <if test="pageview != null" >
         PAGEVIEW = #{pageview,jdbcType=DECIMAL},
       </if>
     </set>
     where MESSAGEID = #{messageid,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.MessageInfo">
-    update MESSAGEINFO
-    set USERID = #{userid,jdbcType=DECIMAL},
-      WMESSAGE = #{wmessage,jdbcType=VARCHAR},
-      ADDTIME = #{addtime,jdbcType=DECIMAL},
-      MSTATE = #{mstate,jdbcType=DECIMAL},
-      PAGEVIEW = #{pageview,jdbcType=DECIMAL}
-    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
-  </update>
-  <resultMap id="BaseResultMap" type="cn.com.pojo.MessageInfo">
-    <id column="MESSAGEID" jdbcType="DECIMAL" property="messageid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="WMESSAGE" jdbcType="VARCHAR" property="wmessage" />
-    <result column="ADDTIME" jdbcType="DECIMAL" property="addtime" />
-    <result column="MSTATE" jdbcType="DECIMAL" property="mstate" />
-    <result column="PAGEVIEW" jdbcType="DECIMAL" property="pageview" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    MESSAGEID, USERID, WMESSAGE, ADDTIME, MSTATE, PAGEVIEW
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from MESSAGEINFO
-    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from MESSAGEINFO
-    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="cn.com.pojo.MessageInfo">
-    insert into MESSAGEINFO (MESSAGEID, USERID, WMESSAGE, 
-      ADDTIME, MSTATE, PAGEVIEW
-      )
-    values (#{messageid,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}, #{wmessage,jdbcType=VARCHAR}, 
-      #{addtime,jdbcType=DECIMAL}, #{mstate,jdbcType=DECIMAL}, #{pageview,jdbcType=DECIMAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.MessageInfo">
-    insert into MESSAGEINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="messageid != null">
-        MESSAGEID,
-      </if>
-      <if test="userid != null">
-        USERID,
-      </if>
-      <if test="wmessage != null">
-        WMESSAGE,
-      </if>
-      <if test="addtime != null">
-        ADDTIME,
-      </if>
-      <if test="mstate != null">
-        MSTATE,
-      </if>
-      <if test="pageview != null">
-        PAGEVIEW,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="messageid != null">
-        #{messageid,jdbcType=DECIMAL},
-      </if>
-      <if test="userid != null">
-        #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="wmessage != null">
-        #{wmessage,jdbcType=VARCHAR},
-      </if>
-      <if test="addtime != null">
-        #{addtime,jdbcType=DECIMAL},
-      </if>
-      <if test="mstate != null">
-        #{mstate,jdbcType=DECIMAL},
-      </if>
-      <if test="pageview != null">
-        #{pageview,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.MessageInfo">
-    update MESSAGEINFO
-    <set>
-      <if test="userid != null">
-        USERID = #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="wmessage != null">
-        WMESSAGE = #{wmessage,jdbcType=VARCHAR},
-      </if>
-      <if test="addtime != null">
-        ADDTIME = #{addtime,jdbcType=DECIMAL},
-      </if>
-      <if test="mstate != null">
-        MSTATE = #{mstate,jdbcType=DECIMAL},
-      </if>
-      <if test="pageview != null">
-        PAGEVIEW = #{pageview,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where MESSAGEID = #{messageid,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.MessageInfo">
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.MessageInfo" >
     update MESSAGEINFO
     set USERID = #{userid,jdbcType=DECIMAL},
       WMESSAGE = #{wmessage,jdbcType=VARCHAR},

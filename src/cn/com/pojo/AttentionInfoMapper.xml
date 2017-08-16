@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.dao.AttentionInfoMapper">
-  <resultMap id="BaseResultMap" type="cn.com.pojo.AttentionInfo">
-    <id column="ATTENDID" jdbcType="DECIMAL" property="attendid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="ATTENDUSERID" jdbcType="DECIMAL" property="attenduserid" />
-    <result column="ATTENTIONTIME" jdbcType="DECIMAL" property="attentiontime" />
-    <result column="GROUPNAME" jdbcType="VARCHAR" property="groupname" />
-    <result column="ISTAKEOFF" jdbcType="DECIMAL" property="istakeoff" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.dao.AttentionInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.pojo.AttentionInfo" >
+    <id column="ATTENDID" property="attendid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="DECIMAL" />
+    <result column="ATTENDUSERID" property="attenduserid" jdbcType="DECIMAL" />
+    <result column="ATTENTIONTIME" property="attentiontime" jdbcType="DECIMAL" />
+    <result column="GROUPNAME" property="groupname" jdbcType="VARCHAR" />
+    <result column="ISTAKEOFF" property="istakeoff" jdbcType="DECIMAL" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     ATTENDID, USERID, ATTENDUSERID, ATTENTIONTIME, GROUPNAME, ISTAKEOFF
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from ATTENTIONINFO
     where ATTENDID = #{attendid,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ATTENTIONINFO
     where ATTENDID = #{attendid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.com.pojo.AttentionInfo">
+  <insert id="insert" parameterType="cn.com.pojo.AttentionInfo" >
     insert into ATTENTIONINFO (ATTENDID, USERID, ATTENDUSERID, 
       ATTENTIONTIME, GROUPNAME, ISTAKEOFF
       )
@@ -30,173 +30,71 @@
       #{attentiontime,jdbcType=DECIMAL}, #{groupname,jdbcType=VARCHAR}, #{istakeoff,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.AttentionInfo">
+  <insert id="insertSelective" parameterType="cn.com.pojo.AttentionInfo" >
     insert into ATTENTIONINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="attendid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attendid != null" >
         ATTENDID,
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         USERID,
       </if>
-      <if test="attenduserid != null">
+      <if test="attenduserid != null" >
         ATTENDUSERID,
       </if>
-      <if test="attentiontime != null">
+      <if test="attentiontime != null" >
         ATTENTIONTIME,
       </if>
-      <if test="groupname != null">
+      <if test="groupname != null" >
         GROUPNAME,
       </if>
-      <if test="istakeoff != null">
+      <if test="istakeoff != null" >
         ISTAKEOFF,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="attendid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attendid != null" >
         #{attendid,jdbcType=DECIMAL},
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="attenduserid != null">
+      <if test="attenduserid != null" >
         #{attenduserid,jdbcType=DECIMAL},
       </if>
-      <if test="attentiontime != null">
+      <if test="attentiontime != null" >
         #{attentiontime,jdbcType=DECIMAL},
       </if>
-      <if test="groupname != null">
+      <if test="groupname != null" >
         #{groupname,jdbcType=VARCHAR},
       </if>
-      <if test="istakeoff != null">
+      <if test="istakeoff != null" >
         #{istakeoff,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.AttentionInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.AttentionInfo" >
     update ATTENTIONINFO
-    <set>
-      <if test="userid != null">
+    <set >
+      <if test="userid != null" >
         USERID = #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="attenduserid != null">
+      <if test="attenduserid != null" >
         ATTENDUSERID = #{attenduserid,jdbcType=DECIMAL},
       </if>
-      <if test="attentiontime != null">
+      <if test="attentiontime != null" >
         ATTENTIONTIME = #{attentiontime,jdbcType=DECIMAL},
       </if>
-      <if test="groupname != null">
+      <if test="groupname != null" >
         GROUPNAME = #{groupname,jdbcType=VARCHAR},
       </if>
-      <if test="istakeoff != null">
+      <if test="istakeoff != null" >
         ISTAKEOFF = #{istakeoff,jdbcType=DECIMAL},
       </if>
     </set>
     where ATTENDID = #{attendid,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.AttentionInfo">
-    update ATTENTIONINFO
-    set USERID = #{userid,jdbcType=DECIMAL},
-      ATTENDUSERID = #{attenduserid,jdbcType=DECIMAL},
-      ATTENTIONTIME = #{attentiontime,jdbcType=DECIMAL},
-      GROUPNAME = #{groupname,jdbcType=VARCHAR},
-      ISTAKEOFF = #{istakeoff,jdbcType=DECIMAL}
-    where ATTENDID = #{attendid,jdbcType=DECIMAL}
-  </update>
-  <resultMap id="BaseResultMap" type="cn.com.pojo.AttentionInfo">
-    <id column="ATTENDID" jdbcType="DECIMAL" property="attendid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="ATTENDUSERID" jdbcType="DECIMAL" property="attenduserid" />
-    <result column="ATTENTIONTIME" jdbcType="DECIMAL" property="attentiontime" />
-    <result column="GROUPNAME" jdbcType="VARCHAR" property="groupname" />
-    <result column="ISTAKEOFF" jdbcType="DECIMAL" property="istakeoff" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    ATTENDID, USERID, ATTENDUSERID, ATTENTIONTIME, GROUPNAME, ISTAKEOFF
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from ATTENTIONINFO
-    where ATTENDID = #{attendid,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from ATTENTIONINFO
-    where ATTENDID = #{attendid,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="cn.com.pojo.AttentionInfo">
-    insert into ATTENTIONINFO (ATTENDID, USERID, ATTENDUSERID, 
-      ATTENTIONTIME, GROUPNAME, ISTAKEOFF
-      )
-    values (#{attendid,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}, #{attenduserid,jdbcType=DECIMAL}, 
-      #{attentiontime,jdbcType=DECIMAL}, #{groupname,jdbcType=VARCHAR}, #{istakeoff,jdbcType=DECIMAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.AttentionInfo">
-    insert into ATTENTIONINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="attendid != null">
-        ATTENDID,
-      </if>
-      <if test="userid != null">
-        USERID,
-      </if>
-      <if test="attenduserid != null">
-        ATTENDUSERID,
-      </if>
-      <if test="attentiontime != null">
-        ATTENTIONTIME,
-      </if>
-      <if test="groupname != null">
-        GROUPNAME,
-      </if>
-      <if test="istakeoff != null">
-        ISTAKEOFF,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="attendid != null">
-        #{attendid,jdbcType=DECIMAL},
-      </if>
-      <if test="userid != null">
-        #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="attenduserid != null">
-        #{attenduserid,jdbcType=DECIMAL},
-      </if>
-      <if test="attentiontime != null">
-        #{attentiontime,jdbcType=DECIMAL},
-      </if>
-      <if test="groupname != null">
-        #{groupname,jdbcType=VARCHAR},
-      </if>
-      <if test="istakeoff != null">
-        #{istakeoff,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.AttentionInfo">
-    update ATTENTIONINFO
-    <set>
-      <if test="userid != null">
-        USERID = #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="attenduserid != null">
-        ATTENDUSERID = #{attenduserid,jdbcType=DECIMAL},
-      </if>
-      <if test="attentiontime != null">
-        ATTENTIONTIME = #{attentiontime,jdbcType=DECIMAL},
-      </if>
-      <if test="groupname != null">
-        GROUPNAME = #{groupname,jdbcType=VARCHAR},
-      </if>
-      <if test="istakeoff != null">
-        ISTAKEOFF = #{istakeoff,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where ATTENDID = #{attendid,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.AttentionInfo">
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.AttentionInfo" >
     update ATTENTIONINFO
     set USERID = #{userid,jdbcType=DECIMAL},
       ATTENDUSERID = #{attenduserid,jdbcType=DECIMAL},

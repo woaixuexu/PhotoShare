@@ -1,88 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.dao.ManagerInfoMapper">
-  <resultMap id="BaseResultMap" type="cn.com.pojo.ManagerInfo">
-    <result column="MANAGERID" jdbcType="DECIMAL" property="managerid" />
-    <result column="MANAGERNAME" jdbcType="VARCHAR" property="managername" />
-    <result column="MANAGERPWD" jdbcType="VARCHAR" property="managerpwd" />
-    <result column="MANAGERLEVEL" jdbcType="DECIMAL" property="managerlevel" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.dao.ManagerInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.pojo.ManagerInfo" >
+    <result column="MANAGERID" property="managerid" jdbcType="DECIMAL" />
+    <result column="MANAGERNAME" property="managername" jdbcType="VARCHAR" />
+    <result column="MANAGERPWD" property="managerpwd" jdbcType="VARCHAR" />
+    <result column="MANAGERLEVEL" property="managerlevel" jdbcType="DECIMAL" />
   </resultMap>
-  <insert id="insert" parameterType="cn.com.pojo.ManagerInfo">
+  <insert id="insert" parameterType="cn.com.pojo.ManagerInfo" >
     insert into MANAGERINFO (MANAGERID, MANAGERNAME, MANAGERPWD, 
       MANAGERLEVEL)
     values (#{managerid,jdbcType=DECIMAL}, #{managername,jdbcType=VARCHAR}, #{managerpwd,jdbcType=VARCHAR}, 
       #{managerlevel,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.ManagerInfo">
+  <insert id="insertSelective" parameterType="cn.com.pojo.ManagerInfo" >
     insert into MANAGERINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="managerid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="managerid != null" >
         MANAGERID,
       </if>
-      <if test="managername != null">
+      <if test="managername != null" >
         MANAGERNAME,
       </if>
-      <if test="managerpwd != null">
+      <if test="managerpwd != null" >
         MANAGERPWD,
       </if>
-      <if test="managerlevel != null">
+      <if test="managerlevel != null" >
         MANAGERLEVEL,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="managerid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="managerid != null" >
         #{managerid,jdbcType=DECIMAL},
       </if>
-      <if test="managername != null">
+      <if test="managername != null" >
         #{managername,jdbcType=VARCHAR},
       </if>
-      <if test="managerpwd != null">
+      <if test="managerpwd != null" >
         #{managerpwd,jdbcType=VARCHAR},
       </if>
-      <if test="managerlevel != null">
-        #{managerlevel,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="cn.com.pojo.ManagerInfo">
-    <result column="MANAGERID" jdbcType="DECIMAL" property="managerid" />
-    <result column="MANAGERNAME" jdbcType="VARCHAR" property="managername" />
-    <result column="MANAGERPWD" jdbcType="VARCHAR" property="managerpwd" />
-    <result column="MANAGERLEVEL" jdbcType="DECIMAL" property="managerlevel" />
-  </resultMap>
-  <insert id="insert" parameterType="cn.com.pojo.ManagerInfo">
-    insert into MANAGERINFO (MANAGERID, MANAGERNAME, MANAGERPWD, 
-      MANAGERLEVEL)
-    values (#{managerid,jdbcType=DECIMAL}, #{managername,jdbcType=VARCHAR}, #{managerpwd,jdbcType=VARCHAR}, 
-      #{managerlevel,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.ManagerInfo">
-    insert into MANAGERINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="managerid != null">
-        MANAGERID,
-      </if>
-      <if test="managername != null">
-        MANAGERNAME,
-      </if>
-      <if test="managerpwd != null">
-        MANAGERPWD,
-      </if>
-      <if test="managerlevel != null">
-        MANAGERLEVEL,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="managerid != null">
-        #{managerid,jdbcType=DECIMAL},
-      </if>
-      <if test="managername != null">
-        #{managername,jdbcType=VARCHAR},
-      </if>
-      <if test="managerpwd != null">
-        #{managerpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="managerlevel != null">
+      <if test="managerlevel != null" >
         #{managerlevel,jdbcType=DECIMAL},
       </if>
     </trim>

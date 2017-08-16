@@ -1,32 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.dao.ReplyInfoMapper">
-  <resultMap id="BaseResultMap" type="cn.com.pojo.ReplyInfo">
-    <id column="REPLYID" jdbcType="DECIMAL" property="replyid" />
-    <result column="COMMENTID" jdbcType="DECIMAL" property="commentid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="AIMUSERID" jdbcType="DECIMAL" property="aimuserid" />
-    <result column="REPLYCOMMENT" jdbcType="VARCHAR" property="replycomment" />
-    <result column="ANONYMITY" jdbcType="DECIMAL" property="anonymity" />
-    <result column="ANONYMITYAIM" jdbcType="DECIMAL" property="anonymityaim" />
-    <result column="REPLYDATE" jdbcType="DECIMAL" property="replydate" />
-    <result column="REPLYSTATE" jdbcType="DECIMAL" property="replystate" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.dao.ReplyInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.pojo.ReplyInfo" >
+    <id column="REPLYID" property="replyid" jdbcType="DECIMAL" />
+    <result column="COMMENTID" property="commentid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="DECIMAL" />
+    <result column="AIMUSERID" property="aimuserid" jdbcType="DECIMAL" />
+    <result column="REPLYCOMMENT" property="replycomment" jdbcType="VARCHAR" />
+    <result column="ANONYMITY" property="anonymity" jdbcType="DECIMAL" />
+    <result column="ANONYMITYAIM" property="anonymityaim" jdbcType="DECIMAL" />
+    <result column="REPLYDATE" property="replydate" jdbcType="DECIMAL" />
+    <result column="REPLYSTATE" property="replystate" jdbcType="DECIMAL" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     REPLYID, COMMENTID, USERID, AIMUSERID, REPLYCOMMENT, ANONYMITY, ANONYMITYAIM, REPLYDATE, 
     REPLYSTATE
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from REPLYINFO
     where REPLYID = #{replyid,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from REPLYINFO
     where REPLYID = #{replyid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.com.pojo.ReplyInfo">
+  <insert id="insert" parameterType="cn.com.pojo.ReplyInfo" >
     insert into REPLYINFO (REPLYID, COMMENTID, USERID, 
       AIMUSERID, REPLYCOMMENT, ANONYMITY, 
       ANONYMITYAIM, REPLYDATE, REPLYSTATE
@@ -36,236 +36,98 @@
       #{anonymityaim,jdbcType=DECIMAL}, #{replydate,jdbcType=DECIMAL}, #{replystate,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.ReplyInfo">
+  <insert id="insertSelective" parameterType="cn.com.pojo.ReplyInfo" >
     insert into REPLYINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="replyid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="replyid != null" >
         REPLYID,
       </if>
-      <if test="commentid != null">
+      <if test="commentid != null" >
         COMMENTID,
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         USERID,
       </if>
-      <if test="aimuserid != null">
+      <if test="aimuserid != null" >
         AIMUSERID,
       </if>
-      <if test="replycomment != null">
+      <if test="replycomment != null" >
         REPLYCOMMENT,
       </if>
-      <if test="anonymity != null">
+      <if test="anonymity != null" >
         ANONYMITY,
       </if>
-      <if test="anonymityaim != null">
+      <if test="anonymityaim != null" >
         ANONYMITYAIM,
       </if>
-      <if test="replydate != null">
+      <if test="replydate != null" >
         REPLYDATE,
       </if>
-      <if test="replystate != null">
+      <if test="replystate != null" >
         REPLYSTATE,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="replyid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="replyid != null" >
         #{replyid,jdbcType=DECIMAL},
       </if>
-      <if test="commentid != null">
+      <if test="commentid != null" >
         #{commentid,jdbcType=DECIMAL},
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="aimuserid != null">
+      <if test="aimuserid != null" >
         #{aimuserid,jdbcType=DECIMAL},
       </if>
-      <if test="replycomment != null">
+      <if test="replycomment != null" >
         #{replycomment,jdbcType=VARCHAR},
       </if>
-      <if test="anonymity != null">
+      <if test="anonymity != null" >
         #{anonymity,jdbcType=DECIMAL},
       </if>
-      <if test="anonymityaim != null">
+      <if test="anonymityaim != null" >
         #{anonymityaim,jdbcType=DECIMAL},
       </if>
-      <if test="replydate != null">
+      <if test="replydate != null" >
         #{replydate,jdbcType=DECIMAL},
       </if>
-      <if test="replystate != null">
+      <if test="replystate != null" >
         #{replystate,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.ReplyInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.ReplyInfo" >
     update REPLYINFO
-    <set>
-      <if test="commentid != null">
+    <set >
+      <if test="commentid != null" >
         COMMENTID = #{commentid,jdbcType=DECIMAL},
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         USERID = #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="aimuserid != null">
+      <if test="aimuserid != null" >
         AIMUSERID = #{aimuserid,jdbcType=DECIMAL},
       </if>
-      <if test="replycomment != null">
+      <if test="replycomment != null" >
         REPLYCOMMENT = #{replycomment,jdbcType=VARCHAR},
       </if>
-      <if test="anonymity != null">
+      <if test="anonymity != null" >
         ANONYMITY = #{anonymity,jdbcType=DECIMAL},
       </if>
-      <if test="anonymityaim != null">
+      <if test="anonymityaim != null" >
         ANONYMITYAIM = #{anonymityaim,jdbcType=DECIMAL},
       </if>
-      <if test="replydate != null">
+      <if test="replydate != null" >
         REPLYDATE = #{replydate,jdbcType=DECIMAL},
       </if>
-      <if test="replystate != null">
+      <if test="replystate != null" >
         REPLYSTATE = #{replystate,jdbcType=DECIMAL},
       </if>
     </set>
     where REPLYID = #{replyid,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.ReplyInfo">
-    update REPLYINFO
-    set COMMENTID = #{commentid,jdbcType=DECIMAL},
-      USERID = #{userid,jdbcType=DECIMAL},
-      AIMUSERID = #{aimuserid,jdbcType=DECIMAL},
-      REPLYCOMMENT = #{replycomment,jdbcType=VARCHAR},
-      ANONYMITY = #{anonymity,jdbcType=DECIMAL},
-      ANONYMITYAIM = #{anonymityaim,jdbcType=DECIMAL},
-      REPLYDATE = #{replydate,jdbcType=DECIMAL},
-      REPLYSTATE = #{replystate,jdbcType=DECIMAL}
-    where REPLYID = #{replyid,jdbcType=DECIMAL}
-  </update>
-  <resultMap id="BaseResultMap" type="cn.com.pojo.ReplyInfo">
-    <id column="REPLYID" jdbcType="DECIMAL" property="replyid" />
-    <result column="COMMENTID" jdbcType="DECIMAL" property="commentid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="AIMUSERID" jdbcType="DECIMAL" property="aimuserid" />
-    <result column="REPLYCOMMENT" jdbcType="VARCHAR" property="replycomment" />
-    <result column="ANONYMITY" jdbcType="DECIMAL" property="anonymity" />
-    <result column="ANONYMITYAIM" jdbcType="DECIMAL" property="anonymityaim" />
-    <result column="REPLYDATE" jdbcType="DECIMAL" property="replydate" />
-    <result column="REPLYSTATE" jdbcType="DECIMAL" property="replystate" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    REPLYID, COMMENTID, USERID, AIMUSERID, REPLYCOMMENT, ANONYMITY, ANONYMITYAIM, REPLYDATE, 
-    REPLYSTATE
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from REPLYINFO
-    where REPLYID = #{replyid,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from REPLYINFO
-    where REPLYID = #{replyid,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="cn.com.pojo.ReplyInfo">
-    insert into REPLYINFO (REPLYID, COMMENTID, USERID, 
-      AIMUSERID, REPLYCOMMENT, ANONYMITY, 
-      ANONYMITYAIM, REPLYDATE, REPLYSTATE
-      )
-    values (#{replyid,jdbcType=DECIMAL}, #{commentid,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}, 
-      #{aimuserid,jdbcType=DECIMAL}, #{replycomment,jdbcType=VARCHAR}, #{anonymity,jdbcType=DECIMAL}, 
-      #{anonymityaim,jdbcType=DECIMAL}, #{replydate,jdbcType=DECIMAL}, #{replystate,jdbcType=DECIMAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.ReplyInfo">
-    insert into REPLYINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="replyid != null">
-        REPLYID,
-      </if>
-      <if test="commentid != null">
-        COMMENTID,
-      </if>
-      <if test="userid != null">
-        USERID,
-      </if>
-      <if test="aimuserid != null">
-        AIMUSERID,
-      </if>
-      <if test="replycomment != null">
-        REPLYCOMMENT,
-      </if>
-      <if test="anonymity != null">
-        ANONYMITY,
-      </if>
-      <if test="anonymityaim != null">
-        ANONYMITYAIM,
-      </if>
-      <if test="replydate != null">
-        REPLYDATE,
-      </if>
-      <if test="replystate != null">
-        REPLYSTATE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="replyid != null">
-        #{replyid,jdbcType=DECIMAL},
-      </if>
-      <if test="commentid != null">
-        #{commentid,jdbcType=DECIMAL},
-      </if>
-      <if test="userid != null">
-        #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="aimuserid != null">
-        #{aimuserid,jdbcType=DECIMAL},
-      </if>
-      <if test="replycomment != null">
-        #{replycomment,jdbcType=VARCHAR},
-      </if>
-      <if test="anonymity != null">
-        #{anonymity,jdbcType=DECIMAL},
-      </if>
-      <if test="anonymityaim != null">
-        #{anonymityaim,jdbcType=DECIMAL},
-      </if>
-      <if test="replydate != null">
-        #{replydate,jdbcType=DECIMAL},
-      </if>
-      <if test="replystate != null">
-        #{replystate,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.ReplyInfo">
-    update REPLYINFO
-    <set>
-      <if test="commentid != null">
-        COMMENTID = #{commentid,jdbcType=DECIMAL},
-      </if>
-      <if test="userid != null">
-        USERID = #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="aimuserid != null">
-        AIMUSERID = #{aimuserid,jdbcType=DECIMAL},
-      </if>
-      <if test="replycomment != null">
-        REPLYCOMMENT = #{replycomment,jdbcType=VARCHAR},
-      </if>
-      <if test="anonymity != null">
-        ANONYMITY = #{anonymity,jdbcType=DECIMAL},
-      </if>
-      <if test="anonymityaim != null">
-        ANONYMITYAIM = #{anonymityaim,jdbcType=DECIMAL},
-      </if>
-      <if test="replydate != null">
-        REPLYDATE = #{replydate,jdbcType=DECIMAL},
-      </if>
-      <if test="replystate != null">
-        REPLYSTATE = #{replystate,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where REPLYID = #{replyid,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.ReplyInfo">
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.ReplyInfo" >
     update REPLYINFO
     set COMMENTID = #{commentid,jdbcType=DECIMAL},
       USERID = #{userid,jdbcType=DECIMAL},

@@ -1,156 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.dao.LikeInfoMapper">
-  <resultMap id="BaseResultMap" type="cn.com.pojo.LikeInfo">
-    <id column="LIKEID" jdbcType="DECIMAL" property="likeid" />
-    <result column="MESSAGEID" jdbcType="DECIMAL" property="messageid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="LIKESTTATE" jdbcType="DECIMAL" property="likesttate" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.dao.LikeInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.pojo.LikeInfo" >
+    <id column="LIKEID" property="likeid" jdbcType="DECIMAL" />
+    <result column="MESSAGEID" property="messageid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="DECIMAL" />
+    <result column="LIKESTTATE" property="likesttate" jdbcType="DECIMAL" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     LIKEID, MESSAGEID, USERID, LIKESTTATE
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from LIKEINFO
     where LIKEID = #{likeid,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from LIKEINFO
     where LIKEID = #{likeid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.com.pojo.LikeInfo">
+  <insert id="insert" parameterType="cn.com.pojo.LikeInfo" >
     insert into LIKEINFO (LIKEID, MESSAGEID, USERID, 
       LIKESTTATE)
     values (#{likeid,jdbcType=DECIMAL}, #{messageid,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}, 
       #{likesttate,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.LikeInfo">
+  <insert id="insertSelective" parameterType="cn.com.pojo.LikeInfo" >
     insert into LIKEINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="likeid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="likeid != null" >
         LIKEID,
       </if>
-      <if test="messageid != null">
+      <if test="messageid != null" >
         MESSAGEID,
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         USERID,
       </if>
-      <if test="likesttate != null">
+      <if test="likesttate != null" >
         LIKESTTATE,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="likeid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="likeid != null" >
         #{likeid,jdbcType=DECIMAL},
       </if>
-      <if test="messageid != null">
+      <if test="messageid != null" >
         #{messageid,jdbcType=DECIMAL},
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="likesttate != null">
+      <if test="likesttate != null" >
         #{likesttate,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.LikeInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.LikeInfo" >
     update LIKEINFO
-    <set>
-      <if test="messageid != null">
+    <set >
+      <if test="messageid != null" >
         MESSAGEID = #{messageid,jdbcType=DECIMAL},
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         USERID = #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="likesttate != null">
+      <if test="likesttate != null" >
         LIKESTTATE = #{likesttate,jdbcType=DECIMAL},
       </if>
     </set>
     where LIKEID = #{likeid,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.LikeInfo">
-    update LIKEINFO
-    set MESSAGEID = #{messageid,jdbcType=DECIMAL},
-      USERID = #{userid,jdbcType=DECIMAL},
-      LIKESTTATE = #{likesttate,jdbcType=DECIMAL}
-    where LIKEID = #{likeid,jdbcType=DECIMAL}
-  </update>
-  <resultMap id="BaseResultMap" type="cn.com.pojo.LikeInfo">
-    <id column="LIKEID" jdbcType="DECIMAL" property="likeid" />
-    <result column="MESSAGEID" jdbcType="DECIMAL" property="messageid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="LIKESTTATE" jdbcType="DECIMAL" property="likesttate" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    LIKEID, MESSAGEID, USERID, LIKESTTATE
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from LIKEINFO
-    where LIKEID = #{likeid,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from LIKEINFO
-    where LIKEID = #{likeid,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="cn.com.pojo.LikeInfo">
-    insert into LIKEINFO (LIKEID, MESSAGEID, USERID, 
-      LIKESTTATE)
-    values (#{likeid,jdbcType=DECIMAL}, #{messageid,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}, 
-      #{likesttate,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.LikeInfo">
-    insert into LIKEINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="likeid != null">
-        LIKEID,
-      </if>
-      <if test="messageid != null">
-        MESSAGEID,
-      </if>
-      <if test="userid != null">
-        USERID,
-      </if>
-      <if test="likesttate != null">
-        LIKESTTATE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="likeid != null">
-        #{likeid,jdbcType=DECIMAL},
-      </if>
-      <if test="messageid != null">
-        #{messageid,jdbcType=DECIMAL},
-      </if>
-      <if test="userid != null">
-        #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="likesttate != null">
-        #{likesttate,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.LikeInfo">
-    update LIKEINFO
-    <set>
-      <if test="messageid != null">
-        MESSAGEID = #{messageid,jdbcType=DECIMAL},
-      </if>
-      <if test="userid != null">
-        USERID = #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="likesttate != null">
-        LIKESTTATE = #{likesttate,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where LIKEID = #{likeid,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.LikeInfo">
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.LikeInfo" >
     update LIKEINFO
     set MESSAGEID = #{messageid,jdbcType=DECIMAL},
       USERID = #{userid,jdbcType=DECIMAL},

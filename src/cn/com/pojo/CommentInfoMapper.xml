@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.dao.CommentInfoMapper">
-  <resultMap id="BaseResultMap" type="cn.com.pojo.CommentInfo">
-    <id column="COMMENTID" jdbcType="DECIMAL" property="commentid" />
-    <result column="MESSAGEID" jdbcType="DECIMAL" property="messageid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="COMMENTS" jdbcType="VARCHAR" property="comments" />
-    <result column="ANONYMITY" jdbcType="DECIMAL" property="anonymity" />
-    <result column="COMMENTDATA" jdbcType="DECIMAL" property="commentdata" />
-    <result column="COMMENTSTATE" jdbcType="DECIMAL" property="commentstate" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.dao.CommentInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.pojo.CommentInfo" >
+    <id column="COMMENTID" property="commentid" jdbcType="DECIMAL" />
+    <result column="MESSAGEID" property="messageid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="DECIMAL" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+    <result column="ANONYMITY" property="anonymity" jdbcType="DECIMAL" />
+    <result column="COMMENTDATA" property="commentdata" jdbcType="DECIMAL" />
+    <result column="COMMENTSTATE" property="commentstate" jdbcType="DECIMAL" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     COMMENTID, MESSAGEID, USERID, COMMENTS, ANONYMITY, COMMENTDATA, COMMENTSTATE
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from COMMENTINFO
     where COMMENTID = #{commentid,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from COMMENTINFO
     where COMMENTID = #{commentid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.com.pojo.CommentInfo">
+  <insert id="insert" parameterType="cn.com.pojo.CommentInfo" >
     insert into COMMENTINFO (COMMENTID, MESSAGEID, USERID, 
       COMMENTS, ANONYMITY, COMMENTDATA, 
       COMMENTSTATE)
@@ -31,197 +31,84 @@
       #{comments,jdbcType=VARCHAR}, #{anonymity,jdbcType=DECIMAL}, #{commentdata,jdbcType=DECIMAL}, 
       #{commentstate,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.CommentInfo">
+  <insert id="insertSelective" parameterType="cn.com.pojo.CommentInfo" >
     insert into COMMENTINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="commentid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentid != null" >
         COMMENTID,
       </if>
-      <if test="messageid != null">
+      <if test="messageid != null" >
         MESSAGEID,
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         USERID,
       </if>
-      <if test="comments != null">
+      <if test="comments != null" >
         COMMENTS,
       </if>
-      <if test="anonymity != null">
+      <if test="anonymity != null" >
         ANONYMITY,
       </if>
-      <if test="commentdata != null">
+      <if test="commentdata != null" >
         COMMENTDATA,
       </if>
-      <if test="commentstate != null">
+      <if test="commentstate != null" >
         COMMENTSTATE,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="commentid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentid != null" >
         #{commentid,jdbcType=DECIMAL},
       </if>
-      <if test="messageid != null">
+      <if test="messageid != null" >
         #{messageid,jdbcType=DECIMAL},
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="comments != null">
+      <if test="comments != null" >
         #{comments,jdbcType=VARCHAR},
       </if>
-      <if test="anonymity != null">
+      <if test="anonymity != null" >
         #{anonymity,jdbcType=DECIMAL},
       </if>
-      <if test="commentdata != null">
+      <if test="commentdata != null" >
         #{commentdata,jdbcType=DECIMAL},
       </if>
-      <if test="commentstate != null">
+      <if test="commentstate != null" >
         #{commentstate,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.CommentInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.CommentInfo" >
     update COMMENTINFO
-    <set>
-      <if test="messageid != null">
+    <set >
+      <if test="messageid != null" >
         MESSAGEID = #{messageid,jdbcType=DECIMAL},
       </if>
-      <if test="userid != null">
+      <if test="userid != null" >
         USERID = #{userid,jdbcType=DECIMAL},
       </if>
-      <if test="comments != null">
+      <if test="comments != null" >
         COMMENTS = #{comments,jdbcType=VARCHAR},
       </if>
-      <if test="anonymity != null">
+      <if test="anonymity != null" >
         ANONYMITY = #{anonymity,jdbcType=DECIMAL},
       </if>
-      <if test="commentdata != null">
+      <if test="commentdata != null" >
         COMMENTDATA = #{commentdata,jdbcType=DECIMAL},
       </if>
-      <if test="commentstate != null">
+      <if test="commentstate != null" >
         COMMENTSTATE = #{commentstate,jdbcType=DECIMAL},
       </if>
     </set>
     where COMMENTID = #{commentid,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.CommentInfo">
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.CommentInfo" >
     update COMMENTINFO
     set MESSAGEID = #{messageid,jdbcType=DECIMAL},
       USERID = #{userid,jdbcType=DECIMAL},
       COMMENTS = #{comments,jdbcType=VARCHAR},
-      ANONYMITY = #{anonymity,jdbcType=DECIMAL},
-      COMMENTDATA = #{commentdata,jdbcType=DECIMAL},
-      COMMENTSTATE = #{commentstate,jdbcType=DECIMAL}
-    where COMMENTID = #{commentid,jdbcType=DECIMAL}
-  </update>
-  <resultMap id="BaseResultMap" type="cn.com.pojo.CommentInfo">
-    <id column="COMMENTID" jdbcType="DECIMAL" property="commentid" />
-    <result column="MESSAGEID" jdbcType="DECIMAL" property="messageid" />
-    <result column="USERID" jdbcType="DECIMAL" property="userid" />
-    <result column="COMMENT" jdbcType="VARCHAR" property="comment" />
-    <result column="ANONYMITY" jdbcType="DECIMAL" property="anonymity" />
-    <result column="COMMENTDATA" jdbcType="DECIMAL" property="commentdata" />
-    <result column="COMMENTSTATE" jdbcType="DECIMAL" property="commentstate" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    COMMENTID, MESSAGEID, USERID, COMMENT, ANONYMITY, COMMENTDATA, COMMENTSTATE
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from COMMENTINFO
-    where COMMENTID = #{commentid,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from COMMENTINFO
-    where COMMENTID = #{commentid,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="cn.com.pojo.CommentInfo">
-    insert into COMMENTINFO (COMMENTID, MESSAGEID, USERID, 
-      COMMENT, ANONYMITY, COMMENTDATA, 
-      COMMENTSTATE)
-    values (#{commentid,jdbcType=DECIMAL}, #{messageid,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}, 
-      #{comment,jdbcType=VARCHAR}, #{anonymity,jdbcType=DECIMAL}, #{commentdata,jdbcType=DECIMAL}, 
-      #{commentstate,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.CommentInfo">
-    insert into COMMENTINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="commentid != null">
-        COMMENTID,
-      </if>
-      <if test="messageid != null">
-        MESSAGEID,
-      </if>
-      <if test="userid != null">
-        USERID,
-      </if>
-      <if test="comment != null">
-        COMMENT,
-      </if>
-      <if test="anonymity != null">
-        ANONYMITY,
-      </if>
-      <if test="commentdata != null">
-        COMMENTDATA,
-      </if>
-      <if test="commentstate != null">
-        COMMENTSTATE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="commentid != null">
-        #{commentid,jdbcType=DECIMAL},
-      </if>
-      <if test="messageid != null">
-        #{messageid,jdbcType=DECIMAL},
-      </if>
-      <if test="userid != null">
-        #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="comment != null">
-        #{comment,jdbcType=VARCHAR},
-      </if>
-      <if test="anonymity != null">
-        #{anonymity,jdbcType=DECIMAL},
-      </if>
-      <if test="commentdata != null">
-        #{commentdata,jdbcType=DECIMAL},
-      </if>
-      <if test="commentstate != null">
-        #{commentstate,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.CommentInfo">
-    update COMMENTINFO
-    <set>
-      <if test="messageid != null">
-        MESSAGEID = #{messageid,jdbcType=DECIMAL},
-      </if>
-      <if test="userid != null">
-        USERID = #{userid,jdbcType=DECIMAL},
-      </if>
-      <if test="comment != null">
-        COMMENT = #{comment,jdbcType=VARCHAR},
-      </if>
-      <if test="anonymity != null">
-        ANONYMITY = #{anonymity,jdbcType=DECIMAL},
-      </if>
-      <if test="commentdata != null">
-        COMMENTDATA = #{commentdata,jdbcType=DECIMAL},
-      </if>
-      <if test="commentstate != null">
-        COMMENTSTATE = #{commentstate,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where COMMENTID = #{commentid,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.CommentInfo">
-    update COMMENTINFO
-    set MESSAGEID = #{messageid,jdbcType=DECIMAL},
-      USERID = #{userid,jdbcType=DECIMAL},
-      COMMENT = #{comment,jdbcType=VARCHAR},
       ANONYMITY = #{anonymity,jdbcType=DECIMAL},
       COMMENTDATA = #{commentdata,jdbcType=DECIMAL},
       COMMENTSTATE = #{commentstate,jdbcType=DECIMAL}
