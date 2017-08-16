@@ -91,7 +91,7 @@ public class WebFormatUtil {
 	}
 	
 	/**
-	 * 获取当前时间(短)数字
+	 * 获取当前时间(短)数字 20170710
 	 * @return int 当前时间
 	 */
 	public int getNowTimeSortInt(){
@@ -101,7 +101,7 @@ public class WebFormatUtil {
 	}
 	
 	/**
-	 * 获取当前时间(长)数字
+	 * 获取当前时间(长)数字 201707101112
 	 * @return long 当前时间
 	 */
 	public long getNowTimeLongInt(){
@@ -112,7 +112,7 @@ public class WebFormatUtil {
 	
 
 	/**
-	 * 获取当前时间(短)字符串
+	 * 获取当前时间(短)字符串 2017-07-11
 	 * @return String 当前时间
 	 */
 	public String getNowTimeSortString(){
@@ -122,7 +122,7 @@ public class WebFormatUtil {
 	}
 	
 	/**
-	 * 获取当前时间(长)字符串
+	 * 获取当前时间(长)字符串 2017-07-11 12:00
 	 * @return String 当前时间
 	 */
 	public String getNowTimeLongString(){
@@ -134,7 +134,7 @@ public class WebFormatUtil {
 	
 	
 	/**
-	 * 将过长的字符串信息缩短
+	 * 将过长的字符串信息缩短(保留40个字符)
 	 * @param StringLong
 	 * @return
 	 */
