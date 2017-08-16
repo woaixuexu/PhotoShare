@@ -1,20 +1,20 @@
 var saveSelectColor = {
     'Name': 'SelcetColor',
-    'Color': 'theme-black'
+    'Color': 'theme-white'
 }
 
 
 
-// 判断用户是否已有自己选择的模板风格
+// 鍒ゆ柇鐢ㄦ埛鏄惁宸叉湁鑷繁閫夋嫨鐨勬ā鏉块鏍�
 if (storageLoad('SelcetColor')) {
     $('body').attr('class', storageLoad('SelcetColor').Color)
 } else {
     storageSave(saveSelectColor);
-    $('body').attr('class', 'theme-black')
+    $('body').attr('class', 'theme-white')
 }
 
 
-// 本地缓存
+// 鏈湴缂撳瓨
 function storageSave(objectData) {
     localStorage.setItem(objectData.Name, JSON.stringify(objectData));
 }
