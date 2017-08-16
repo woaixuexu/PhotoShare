@@ -1,68 +1,135 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.com.dao.PictureInfoMapper" >
-  <resultMap id="BaseResultMap" type="cn.com.pojo.PictureInfo" >
-    <id column="PICID" property="picid" jdbcType="DECIMAL" />
-    <result column="MESSAGEID" property="messageid" jdbcType="DECIMAL" />
-    <result column="PICPATH" property="picpath" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.dao.PictureInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.com.pojo.PictureInfo">
+    <id column="PICID" jdbcType="DECIMAL" property="picid" />
+    <result column="MESSAGEID" jdbcType="DECIMAL" property="messageid" />
+    <result column="PICPATH" jdbcType="VARCHAR" property="picpath" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     PICID, MESSAGEID, PICPATH
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from PICTUREINFO
     where PICID = #{picid,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from PICTUREINFO
     where PICID = #{picid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.com.pojo.PictureInfo" >
+  <insert id="insert" parameterType="cn.com.pojo.PictureInfo">
     insert into PICTUREINFO (PICID, MESSAGEID, PICPATH
       )
     values (#{picid,jdbcType=DECIMAL}, #{messageid,jdbcType=DECIMAL}, #{picpath,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.PictureInfo" >
+  <insert id="insertSelective" parameterType="cn.com.pojo.PictureInfo">
     insert into PICTUREINFO
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="picid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="picid != null">
         PICID,
       </if>
-      <if test="messageid != null" >
+      <if test="messageid != null">
         MESSAGEID,
       </if>
-      <if test="picpath != null" >
+      <if test="picpath != null">
         PICPATH,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="picid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="picid != null">
         #{picid,jdbcType=DECIMAL},
       </if>
-      <if test="messageid != null" >
+      <if test="messageid != null">
         #{messageid,jdbcType=DECIMAL},
       </if>
-      <if test="picpath != null" >
+      <if test="picpath != null">
         #{picpath,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.PictureInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.PictureInfo">
     update PICTUREINFO
-    <set >
-      <if test="messageid != null" >
+    <set>
+      <if test="messageid != null">
         MESSAGEID = #{messageid,jdbcType=DECIMAL},
       </if>
-      <if test="picpath != null" >
+      <if test="picpath != null">
         PICPATH = #{picpath,jdbcType=VARCHAR},
       </if>
     </set>
     where PICID = #{picid,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.PictureInfo" >
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.PictureInfo">
+    update PICTUREINFO
+    set MESSAGEID = #{messageid,jdbcType=DECIMAL},
+      PICPATH = #{picpath,jdbcType=VARCHAR}
+    where PICID = #{picid,jdbcType=DECIMAL}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.com.pojo.PictureInfo">
+    <id column="PICID" jdbcType="DECIMAL" property="picid" />
+    <result column="MESSAGEID" jdbcType="DECIMAL" property="messageid" />
+    <result column="PICPATH" jdbcType="VARCHAR" property="picpath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PICID, MESSAGEID, PICPATH
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PICTUREINFO
+    where PICID = #{picid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from PICTUREINFO
+    where PICID = #{picid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="cn.com.pojo.PictureInfo">
+    insert into PICTUREINFO (PICID, MESSAGEID, PICPATH
+      )
+    values (#{picid,jdbcType=DECIMAL}, #{messageid,jdbcType=DECIMAL}, #{picpath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.pojo.PictureInfo">
+    insert into PICTUREINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="picid != null">
+        PICID,
+      </if>
+      <if test="messageid != null">
+        MESSAGEID,
+      </if>
+      <if test="picpath != null">
+        PICPATH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="picid != null">
+        #{picid,jdbcType=DECIMAL},
+      </if>
+      <if test="messageid != null">
+        #{messageid,jdbcType=DECIMAL},
+      </if>
+      <if test="picpath != null">
+        #{picpath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.PictureInfo">
+    update PICTUREINFO
+    <set>
+      <if test="messageid != null">
+        MESSAGEID = #{messageid,jdbcType=DECIMAL},
+      </if>
+      <if test="picpath != null">
+        PICPATH = #{picpath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PICID = #{picid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.PictureInfo">
     update PICTUREINFO
     set MESSAGEID = #{messageid,jdbcType=DECIMAL},
       PICPATH = #{picpath,jdbcType=VARCHAR}

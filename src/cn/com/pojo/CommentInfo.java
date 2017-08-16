@@ -7,7 +7,7 @@ public class CommentInfo {
 
     private Integer userid;
 
-    private String comment;
+    private String comments;
 
     private Integer anonymity;
 
@@ -39,12 +39,12 @@ public class CommentInfo {
         this.userid = userid;
     }
 
-    public String getComment() {
-        return comment;
+    public String getComments() {
+        return comments;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment == null ? null : comment.trim();
+    public void setComments(String comments) {
+        this.comments = comments == null ? null : comments.trim();
     }
 
     public Integer getAnonymity() {

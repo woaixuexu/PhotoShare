@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.com.dao.PushInfoMapper" >
-  <resultMap id="BaseResultMap" type="cn.com.pojo.PushInfo" >
-    <id column="PUSHIID" property="pushiid" jdbcType="DECIMAL" />
-    <result column="PUSHNAME" property="pushname" jdbcType="VARCHAR" />
-    <result column="PUSHINTRO" property="pushintro" jdbcType="VARCHAR" />
-    <result column="DOWNLOADPATH" property="downloadpath" jdbcType="VARCHAR" />
-    <result column="VIDEOPATH" property="videopath" jdbcType="VARCHAR" />
-    <result column="PUSHITIME" property="pushitime" jdbcType="DECIMAL" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.dao.PushInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.com.pojo.PushInfo">
+    <id column="PUSHIID" jdbcType="DECIMAL" property="pushiid" />
+    <result column="PUSHNAME" jdbcType="VARCHAR" property="pushname" />
+    <result column="PUSHINTRO" jdbcType="VARCHAR" property="pushintro" />
+    <result column="DOWNLOADPATH" jdbcType="VARCHAR" property="downloadpath" />
+    <result column="VIDEOPATH" jdbcType="VARCHAR" property="videopath" />
+    <result column="PUSHITIME" jdbcType="DECIMAL" property="pushitime" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     PUSHIID, PUSHNAME, PUSHINTRO, DOWNLOADPATH, VIDEOPATH, PUSHITIME
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from PUSHINFO
     where PUSHIID = #{pushiid,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from PUSHINFO
     where PUSHIID = #{pushiid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.com.pojo.PushInfo" >
+  <insert id="insert" parameterType="cn.com.pojo.PushInfo">
     insert into PUSHINFO (PUSHIID, PUSHNAME, PUSHINTRO, 
       DOWNLOADPATH, VIDEOPATH, PUSHITIME
       )
@@ -30,71 +30,173 @@
       #{downloadpath,jdbcType=VARCHAR}, #{videopath,jdbcType=VARCHAR}, #{pushitime,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.pojo.PushInfo" >
+  <insert id="insertSelective" parameterType="cn.com.pojo.PushInfo">
     insert into PUSHINFO
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="pushiid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pushiid != null">
         PUSHIID,
       </if>
-      <if test="pushname != null" >
+      <if test="pushname != null">
         PUSHNAME,
       </if>
-      <if test="pushintro != null" >
+      <if test="pushintro != null">
         PUSHINTRO,
       </if>
-      <if test="downloadpath != null" >
+      <if test="downloadpath != null">
         DOWNLOADPATH,
       </if>
-      <if test="videopath != null" >
+      <if test="videopath != null">
         VIDEOPATH,
       </if>
-      <if test="pushitime != null" >
+      <if test="pushitime != null">
         PUSHITIME,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="pushiid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pushiid != null">
         #{pushiid,jdbcType=DECIMAL},
       </if>
-      <if test="pushname != null" >
+      <if test="pushname != null">
         #{pushname,jdbcType=VARCHAR},
       </if>
-      <if test="pushintro != null" >
+      <if test="pushintro != null">
         #{pushintro,jdbcType=VARCHAR},
       </if>
-      <if test="downloadpath != null" >
+      <if test="downloadpath != null">
         #{downloadpath,jdbcType=VARCHAR},
       </if>
-      <if test="videopath != null" >
+      <if test="videopath != null">
         #{videopath,jdbcType=VARCHAR},
       </if>
-      <if test="pushitime != null" >
+      <if test="pushitime != null">
         #{pushitime,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.PushInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.PushInfo">
     update PUSHINFO
-    <set >
-      <if test="pushname != null" >
+    <set>
+      <if test="pushname != null">
         PUSHNAME = #{pushname,jdbcType=VARCHAR},
       </if>
-      <if test="pushintro != null" >
+      <if test="pushintro != null">
         PUSHINTRO = #{pushintro,jdbcType=VARCHAR},
       </if>
-      <if test="downloadpath != null" >
+      <if test="downloadpath != null">
         DOWNLOADPATH = #{downloadpath,jdbcType=VARCHAR},
       </if>
-      <if test="videopath != null" >
+      <if test="videopath != null">
         VIDEOPATH = #{videopath,jdbcType=VARCHAR},
       </if>
-      <if test="pushitime != null" >
+      <if test="pushitime != null">
         PUSHITIME = #{pushitime,jdbcType=DECIMAL},
       </if>
     </set>
     where PUSHIID = #{pushiid,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.PushInfo" >
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.PushInfo">
+    update PUSHINFO
+    set PUSHNAME = #{pushname,jdbcType=VARCHAR},
+      PUSHINTRO = #{pushintro,jdbcType=VARCHAR},
+      DOWNLOADPATH = #{downloadpath,jdbcType=VARCHAR},
+      VIDEOPATH = #{videopath,jdbcType=VARCHAR},
+      PUSHITIME = #{pushitime,jdbcType=DECIMAL}
+    where PUSHIID = #{pushiid,jdbcType=DECIMAL}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.com.pojo.PushInfo">
+    <id column="PUSHIID" jdbcType="DECIMAL" property="pushiid" />
+    <result column="PUSHNAME" jdbcType="VARCHAR" property="pushname" />
+    <result column="PUSHINTRO" jdbcType="VARCHAR" property="pushintro" />
+    <result column="DOWNLOADPATH" jdbcType="VARCHAR" property="downloadpath" />
+    <result column="VIDEOPATH" jdbcType="VARCHAR" property="videopath" />
+    <result column="PUSHITIME" jdbcType="DECIMAL" property="pushitime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PUSHIID, PUSHNAME, PUSHINTRO, DOWNLOADPATH, VIDEOPATH, PUSHITIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PUSHINFO
+    where PUSHIID = #{pushiid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from PUSHINFO
+    where PUSHIID = #{pushiid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="cn.com.pojo.PushInfo">
+    insert into PUSHINFO (PUSHIID, PUSHNAME, PUSHINTRO, 
+      DOWNLOADPATH, VIDEOPATH, PUSHITIME
+      )
+    values (#{pushiid,jdbcType=DECIMAL}, #{pushname,jdbcType=VARCHAR}, #{pushintro,jdbcType=VARCHAR}, 
+      #{downloadpath,jdbcType=VARCHAR}, #{videopath,jdbcType=VARCHAR}, #{pushitime,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.pojo.PushInfo">
+    insert into PUSHINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pushiid != null">
+        PUSHIID,
+      </if>
+      <if test="pushname != null">
+        PUSHNAME,
+      </if>
+      <if test="pushintro != null">
+        PUSHINTRO,
+      </if>
+      <if test="downloadpath != null">
+        DOWNLOADPATH,
+      </if>
+      <if test="videopath != null">
+        VIDEOPATH,
+      </if>
+      <if test="pushitime != null">
+        PUSHITIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pushiid != null">
+        #{pushiid,jdbcType=DECIMAL},
+      </if>
+      <if test="pushname != null">
+        #{pushname,jdbcType=VARCHAR},
+      </if>
+      <if test="pushintro != null">
+        #{pushintro,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadpath != null">
+        #{downloadpath,jdbcType=VARCHAR},
+      </if>
+      <if test="videopath != null">
+        #{videopath,jdbcType=VARCHAR},
+      </if>
+      <if test="pushitime != null">
+        #{pushitime,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pojo.PushInfo">
+    update PUSHINFO
+    <set>
+      <if test="pushname != null">
+        PUSHNAME = #{pushname,jdbcType=VARCHAR},
+      </if>
+      <if test="pushintro != null">
+        PUSHINTRO = #{pushintro,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadpath != null">
+        DOWNLOADPATH = #{downloadpath,jdbcType=VARCHAR},
+      </if>
+      <if test="videopath != null">
+        VIDEOPATH = #{videopath,jdbcType=VARCHAR},
+      </if>
+      <if test="pushitime != null">
+        PUSHITIME = #{pushitime,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where PUSHIID = #{pushiid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.pojo.PushInfo">
     update PUSHINFO
     set PUSHNAME = #{pushname,jdbcType=VARCHAR},
       PUSHINTRO = #{pushintro,jdbcType=VARCHAR},
